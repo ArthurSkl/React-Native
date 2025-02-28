@@ -1,23 +1,62 @@
+import { useState, useEffect } from 'react'
 import {View, Text, StyleSheet} from 'react-native'
-import {SafeAreaView} from "react-native-safe-area-context"
+import {SafeAreaView, SafeAreaProvider} from "react-native-safe-area-context"
+import {useIsFocused} from "@react-navigation/native"
+import useStorage from "../../hooks/useStorage"
+import { FlatList } from 'react-native-gesture-handler'
+import {PasswordItem} from "./components/passworditem"
 
 export function Passwords(){
+
+    const [listPasswords, setListPasswords] = useState([])
+    const focused =  useIsFocused();
+    const {getItem, removeItem} = useStorage();
+
+    useEffect(() => {
+
+        async function loadPasswords () {
+            const passwords = await getItem("@pass")
+            setListPasswords(passwords);
+        }
+
+        loadPasswords();
+
+
+    }, [focused])
+
+    async function handleDeletePassword(item){
+        console.log(item)
+        const passwords = await removeItem("@pass", item)
+        setListPasswords(passwords)
+    }
     return(
+        <SafeAreaProvider style={{flex:1}}>
+            <SafeAreaView>
 
-        <SafeAreaView style={{flex:1,}}>
+                <View style={styles.header}>
 
-            <View style={styles.header}>
+                    <Text style={styles.title}>
 
-                <Text style={styles.title}>
+                        Minhas Senhas           
 
-                    Minhas Senhas           
+                    </Text>
 
-                </Text>
+                </View>
 
-            </View>
+                <View style={styles.content}>
 
-        </SafeAreaView>
+                    <FlatList 
+                        style={{flex:1,paddingTop:14}}
+                        data={listPasswords} 
+                        keyExtractor={(item) => String(item)}
+                        renderItem={ ( {item}) => <PasswordItem data={item} removePassword={()=>handleDeletePassword(item)}/> }>
+                    </FlatList>        
 
+                
+                </View>
+
+            </SafeAreaView>
+        </SafeAreaProvider>
     )
 
 }
@@ -34,6 +73,21 @@ const styles = StyleSheet.create({
         fontSize:18,
         color:"#FFF",
         fontWeight:"bold"
+    },
+    textSenha:{
+        fontSize:20,
+        width:"100%",
+        height:"35%",
+        position:"absolute",
+        backgroundColor:"red"
+
+    },
+    content:{
+        width:"100%",
+        height:"100%",
+        paddingLeft:14,
+        paddingRight:14
+       
     }
 
 
