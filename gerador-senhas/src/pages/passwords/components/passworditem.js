@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         backgroundColor:"#0e0e0e",
         padding:14,
         width:"100%",
+        maxWidth: 800,
         marginBottom:14,
         borderRadius:8,
         flexDirection:"row",

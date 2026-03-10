@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     content:{
         backgroundColor:"#FFF",
         width:"85%",
+        maxWidth: 800,
         paddingTop:24,
         paddingBottom:24,alignItems:"center",
         justifyContent:"center",
@@ -78,7 +79,8 @@ const styles = StyleSheet.create({
     },
     innerPassword:{
         backgroundColor:"#0e0e0e",width:"90%",
-        height:"18%",
+        maxWidth: 800,
+        height:"30%",
         padding:14,
         borderRadius:16,
     },
@@ -89,6 +91,7 @@ const styles = StyleSheet.create({
     buttonArea:{
         flexDirection:"row",
         width:"90%",
+        maxWidth: 800,
         marginTop:8,
         alignItems:"center",
         justifyContent:"space-between"

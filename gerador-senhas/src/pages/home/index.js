@@ -31,7 +31,7 @@ export function Home() {
 
       <Text style={styles.title}>{size} caracter</Text>
       <View style={styles.area}>
-        <Slider style={{ width: '100%', height: 40 }} minimumValue={8} maximumValue={34} 
+        <Slider style={{ width: '100%',maxWidth: 800, height: 40 }} minimumValue={8} maximumValue={34} 
         value={size}
         onValueChange={(value) => setSize(Number(value.toFixed(0)))}
         >
@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
   },
   logo:{
     width:"100%",
-    height:"30%",
+    maxWidth: 250,
+    height: 250,
     marginBottom:60,
     objectFit:"contain"
   },
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
     marginTop:14,
     marginBottom:14,
     width:"80%",
+    maxWidth: 800,
     backgroundColor:"#FFF",
     borderRadius:12,
     padding:8,

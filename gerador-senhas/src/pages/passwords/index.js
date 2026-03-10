@@ -78,12 +78,14 @@ const styles = StyleSheet.create({
         fontSize:20,
         width:"100%",
         height:"35%",
+        maxWidth: 800,
         position:"absolute",
         backgroundColor:"red"
 
     },
     content:{
         width:"100%",
+        maxWidth: 800,
         height:"100%",
         paddingLeft:14,
         paddingRight:14
