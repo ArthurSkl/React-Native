@@ -3,8 +3,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Modal } from 'react-native';
 import Slider from '@react-native-community/slider'
 import {ModalPassword} from '../../assets/components/modal password'
+import { generatePassword } from '../../utils/generatePassword'
 
-let charset="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 export function Home() {
 
   const[size, setSize] = useState(10)
@@ -12,11 +12,7 @@ export function Home() {
   const[modalVisible, setModalVisible] = useState(false);
 
   function generatepassword(){
-    let password = "";
-    for(let i = 0,n=charset.length; i < size; i++){
-      password += charset.charAt(Math.floor(Math.random()*n))
-    }
-    setpasswordValue(password)
+    setpasswordValue(generatePassword(size))
     setModalVisible(true);
   }
 

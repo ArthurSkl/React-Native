@@ -2,6 +2,8 @@
 
 Um aplicativo mobile de geração e armazenamento de senhas, desenvolvido em **React Native** com **Expo**.
 
+[![CI](https://github.com/ArthurSkl/app-gerador-de-senhas/actions/workflows/ci.yml/badge.svg)](https://github.com/ArthurSkl/app-gerador-de-senhas/actions/workflows/ci.yml)
+
 ---
 
 ## Conteúdo
@@ -10,7 +12,8 @@ Um aplicativo mobile de geração e armazenamento de senhas, desenvolvido em **R
 2. [Funcionalidades](#funcionalidades)
 3. [Pré-requisitos](#pré-requisitos)
 4. [Instalação](#instalação)
-5. [Estrutura do Projeto](#estrutura-do-projeto)
+5. [Testes](#testes)
+6. [Estrutura do Projeto](#estrutura-do-projeto)
 6. [Configuração (app.json)](#configuração-appjson)
 7. [Dependências Principais](#dependências-principais)
 8. [Arquitetura e Fluxo](#arquitetura-e-fluxo)
@@ -50,8 +53,8 @@ O **gerador-senhas** é um aplicativo que permite gerar senhas aleatórias de ta
 
 ```bash
 # Clone o repositório
-git clone https://github.com/ArthurSkl/React-Native.git
-cd React-Native/gerador-senhas
+git clone https://github.com/ArthurSkl/app-gerador-de-senhas.git
+cd app-gerador-de-senhas/gerador-senhas
 
 # Instale as dependências
 npm install
@@ -63,6 +66,18 @@ npm run start
 ```
 
 Abra no Expo Go ou emulador (Android/iOS).
+
+## Testes
+
+Testes unitários com **Jest** (`jest-expo`) cobrindo a geração de senha (`src/utils/generatePassword.js`) e o armazenamento via AsyncStorage (`src/hooks/useStorage.js`).
+
+```bash
+npm test
+```
+
+- Documentação de QA: [`docs/QA.md`](docs/QA.md)
+- Casos de teste: [`docs/TEST_CASES.md`](docs/TEST_CASES.md)
+- O CI roda `npm test` a cada push na `main` (`.github/workflows/ci.yml`).
 
 ## Estrutura do Projeto
 
